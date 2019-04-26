@@ -1,12 +1,11 @@
 import React from 'react'
-import { Platform, Text, View, ActivityIndicator, Image } from 'react-native'
+import { Platform, Text, View, Button, ActivityIndicator, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import ExampleActions from 'App/Stores/Example/Actions'
 import { liveInEurope } from 'App/Stores/Example/Selectors'
 import Style from './ExampleScreenStyle'
 import { Images } from 'App/Theme'
-import { Button, Header } from 'react-native-elements';
 
 /**
  * This is an example of a container component.
@@ -31,7 +30,28 @@ class ExampleScreen extends React.Component {
         {this.props.userIsLoading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
-          <Button title="Hey!" />
+          <View>
+            <View style={Style.logoContainer}>
+              <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} />
+            </View>
+            <Text style={Style.text}>To get started, edit App.js</Text>
+            <Text style={Style.instructions}>{instructions}</Text>
+            {this.props.userErrorMessage ? (
+              <Text style={Style.error}>{this.props.userErrorMessage}</Text>
+            ) : (
+              <View>
+                <Text style={Style.result}>
+                  {"I'm a fake user, my name is "}
+                  {this.props.user.name}
+                </Text>
+                <Text style={Style.result}>
+                  {this.props.liveInEurope ? 'I live in Europe !' : "I don't live in Europe."}
+                </Text>
+              </View>
+            )}
+            <Button onPress={this.props.fetchUser} title="Refresh" />
+            <Button onPress={() => this.props.navigation.navigate('Login')} title="Go to login" />
+          </View>
         )}
       </View>
     )
