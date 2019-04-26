@@ -4,4 +4,5 @@
 
 export default {
   logo: require('App/Images/VR10DULKARS.png'),
+  loginHero: require('App/Images/STADIUM-PROPS.jpg')
 }

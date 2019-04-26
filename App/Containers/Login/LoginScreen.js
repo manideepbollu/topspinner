@@ -33,17 +33,25 @@ class LoginScreen extends React.Component {
     return (
       <Container>
         <Header navigation={this.props.navigation} />
-        {/* <Container style={Style.logoContainer}>
-          <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} />
-        </Container> */}
+        <Image style={Style.logo} source={Images.loginHero} resizeMode={'contain'} />
         <Container style={Style.container}>
-          <FloatingInput textContentType='emailAddress' text='Username' />
-          <FloatingInput textContentType='password' text='Password' />
-          <Button block primary style={Style.button}><Text> LOGIN </Text></Button>
+          <Button block info style={Style.button}><Text>LOGIN WITH FACEBOOK</Text></Button>
+          <FloatingInput
+            containerStyle={Style.inputContainerStyle}
+            textContentType='username'
+            autoCapitalize='none'
+            text='Username'
+          />
+          <FloatingInput
+            containerStyle={Style.inputContainerStyle}
+            textContentType='password'
+            autoCapitalize='none'
+            secureTextEntry={true}
+            text='Password'
+          />
+          <Button block primary style={Style.button}><Text>LOGIN</Text></Button>
+          <Button bordered block primary style={Style.button}><Text>REGISTER</Text></Button>
         </Container>
-        {/* <Button
-          title="LOGIN"
-        /> */}
       </Container>
     )
   }

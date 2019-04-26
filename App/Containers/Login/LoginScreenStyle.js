@@ -6,11 +6,14 @@ export default StyleSheet.create({
   container: {
     ...ApplicationStyles.screen.container,
     margin: 30,
+    marginTop: 0,
     flex: 1,
   },
   button: {
     marginTop: 20,
-    textAlign: 'center',
+  },
+  inputContainerStyle: {
+    marginTop: 10,
   },
   text: {
     ...Fonts.style.normal,
@@ -39,15 +42,8 @@ export default StyleSheet.create({
     marginBottom: 5,
     color: 'red',
   },
-  logoContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    textAlign: 'center',
-    marginBottom: 25,
-  },
   logo: {
-    width: '50%',
-    height: '50%',
+    width: '100%',
+    height: 300,
   },
 })
