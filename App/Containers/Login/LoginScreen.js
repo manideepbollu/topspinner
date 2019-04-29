@@ -1,14 +1,14 @@
 import React from 'react'
-import { Platform, View, Input, ActivityIndicator, Image } from 'react-native'
+import { Platform, Image, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import ExampleActions from 'App/Stores/Example/Actions'
 import { liveInEurope } from 'App/Stores/Example/Selectors'
-import { Button, Container, Content, Form, Text } from 'native-base'
+import { Button, Container, Text } from 'native-base'
 import { Images } from 'App/Theme'
 import Style from './LoginScreenStyle'
 import Header from 'App/Components/Header'
-import FloatingInput from 'App/Components/FloatingInput'
+import Input from 'App/Components/Input'
 
 // import { Header, Button, Input, ThemeProvider } from 'react-native-elements';
 
@@ -19,11 +19,6 @@ import FloatingInput from 'App/Components/FloatingInput'
  * Feel free to remove it.
  */
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu.',
-  android: 'Double tap R on your keyboard to reload,\nShake or press menu button for dev menu.',
-})
-
 class LoginScreen extends React.Component {
   componentDidMount() {
     this.props.fetchUser()
@@ -33,25 +28,28 @@ class LoginScreen extends React.Component {
     return (
       <Container>
         <Header navigation={this.props.navigation} />
-        <Image style={Style.logo} source={Images.loginHero} resizeMode={'contain'} />
-        <Container style={Style.container}>
-          <Button block info style={Style.button}><Text>LOGIN WITH FACEBOOK</Text></Button>
-          <FloatingInput
-            containerStyle={Style.inputContainerStyle}
-            textContentType='username'
-            autoCapitalize='none'
-            text='Username'
-          />
-          <FloatingInput
-            containerStyle={Style.inputContainerStyle}
-            textContentType='password'
-            autoCapitalize='none'
-            secureTextEntry={true}
-            text='Password'
-          />
-          <Button block primary style={Style.button}><Text>LOGIN</Text></Button>
-          <Button bordered block primary style={Style.button}><Text>REGISTER</Text></Button>
-        </Container>
+        <ScrollView>
+          <Image style={Style.logo} source={Images.loginHero} resizeMode={'contain'} />
+          <Container style={Style.inputContainer}>
+            <Input
+              containerStyle={Style.inputContainerStyle}
+              textContentType='username'
+              autoCapitalize='none'
+              text='Username'
+            />
+            <Input
+              containerStyle={Style.inputContainerStyle}
+              textContentType='password'
+              autoCapitalize='none'
+              secureTextEntry={true}
+              text='Password'
+            />
+            <Container style={Style.buttonContainer}>
+              <Button block primary style={Style.button}><Text>LOGIN</Text></Button>
+              <Button bordered block primary style={Style.button}><Text>REGISTER</Text></Button>
+            </Container>
+          </Container>
+        </ScrollView>
       </Container>
     )
   }
