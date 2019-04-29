@@ -102,7 +102,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.topspinner"
+        applicationId "com.vrtcricket"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
