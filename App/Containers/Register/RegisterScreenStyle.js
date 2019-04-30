@@ -3,6 +3,7 @@ import ApplicationStyles from 'App/Theme/ApplicationStyles'
 
 export default StyleSheet.create({
   inputContainer: {
+    ...ApplicationStyles.screen.container,
     margin: 30,
     marginTop: -20,
     flex: 1,
@@ -17,8 +18,10 @@ export default StyleSheet.create({
     marginTop: 10,
   },
   hero: {
-    width: '100%',
+    width: '80%',
+    marginLeft: '10%',
+    marginRight: '10%',
     marginTop: -20,
     height: 300,
-  },
+  }
 })

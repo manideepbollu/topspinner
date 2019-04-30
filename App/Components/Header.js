@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import { Container, Header as NativeHeader, Left, Body, Right, Button, Icon, Title } from 'native-base';
-export default class Header extends Component {
+import React, { Component } from 'react'
+import { Header as NativeHeader, Left, Body, Right, Button, Icon, Title } from 'native-base'
+import { PropTypes } from 'prop-types'
+
+class Header extends Component {
   render() {
+    const { navigation, title } = this.props;
     return (
       <NativeHeader>
         <Left>
-          <Button onPress={() => this.props.navigation.goBack()} transparent>
-            <Icon name='arrow-back' />
+          <Button onPress={() => navigation.goBack()} transparent>
+            <Icon name="arrow-back" />
           </Button>
         </Left>
         <Body>
-          <Title>LOGIN</Title>
+          <Title>{title}</Title>
         </Body>
         <Right>
           {/* <Button transparent>
@@ -20,10 +23,17 @@ export default class Header extends Component {
               <Icon name='heart' />
             </Button> */}
           <Button transparent>
-            <Icon name='more' />
+            <Icon name="more" />
           </Button>
         </Right>
       </NativeHeader>
-    );
+    )
   }
 }
+
+Header.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired
+}
+
+export default Header

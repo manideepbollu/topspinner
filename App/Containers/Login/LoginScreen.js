@@ -1,10 +1,8 @@
 import React from 'react'
-import { Platform, Image, ScrollView } from 'react-native'
+import { View, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import ExampleActions from 'App/Stores/Example/Actions'
-import { liveInEurope } from 'App/Stores/Example/Selectors'
-import { Button, Container, Text } from 'native-base'
+import { Button, Container, Content, Text } from 'native-base'
 import { Images } from 'App/Theme'
 import Style from './LoginScreenStyle'
 import Header from 'App/Components/Header'
@@ -20,58 +18,57 @@ import Input from 'App/Components/Input'
  */
 
 class LoginScreen extends React.Component {
-  componentDidMount() {
-    this.props.fetchUser()
-  }
-
   render() {
     return (
       <Container>
-        <Header navigation={this.props.navigation} />
-        <ScrollView>
-          <Image style={Style.logo} source={Images.loginHero} resizeMode={'contain'} />
-          <Container style={Style.inputContainer}>
+        <Header title="LOGIN" navigation={this.props.navigation} />
+        <Content>
+          <Image style={Style.hero} source={Images.loginHero} resizeMode={'contain'} />
+          <View style={Style.inputContainer}>
             <Input
               containerStyle={Style.inputContainerStyle}
-              textContentType='username'
-              autoCapitalize='none'
-              text='Username'
+              textContentType="emailAddress"
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="Email"
             />
             <Input
               containerStyle={Style.inputContainerStyle}
-              textContentType='password'
-              autoCapitalize='none'
+              textContentType="password"
+              autoCapitalize="none"
               secureTextEntry={true}
-              text='Password'
+              autoCorrect={false}
+              placeholder="Password"
             />
-            <Container style={Style.buttonContainer}>
-              <Button block primary style={Style.button}><Text>LOGIN</Text></Button>
-              <Button bordered block primary style={Style.button}><Text>REGISTER</Text></Button>
-            </Container>
-          </Container>
-        </ScrollView>
+            <View style={Style.buttonContainer}>
+              <Button block primary style={Style.button}>
+                <Text>LOGIN</Text>
+              </Button>
+              <Button
+                onPress={() => this.props.navigation.navigate('Register')}
+                bordered
+                block
+                primary
+                style={Style.button}
+              >
+                <Text>REGISTER</Text>
+              </Button>
+            </View>
+          </View>
+        </Content>
       </Container>
     )
   }
 }
 
 LoginScreen.propTypes = {
-  user: PropTypes.object,
-  userIsLoading: PropTypes.bool,
-  userErrorMessage: PropTypes.string,
-  fetchUser: PropTypes.func,
-  liveInEurope: PropTypes.bool,
+  navigation: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
-  user: state.example.user,
-  userIsLoading: state.example.userIsLoading,
-  userErrorMessage: state.example.userErrorMessage,
-  liveInEurope: liveInEurope(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUser: () => dispatch(ExampleActions.fetchUser()),
 })
 
 export default connect(
