@@ -1,19 +1,21 @@
 import React from 'react'
 import { View, Image } from 'react-native'
-import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { Container, Content, Button, Text } from 'native-base'
 import { Images } from 'App/Theme'
 import Style from './RegisterScreenStyle'
-import Header from 'App/Components/Header'
 import Input from 'App/Components/Input'
 import InputPicker from 'App/Components/InputPicker'
 
 class RegisterScreen extends React.Component {
+
+  static navigationOptions = {
+    title: 'REGISTER',
+  };
+
   render() {
     return (
       <Container>
-        <Header navigation={this.props.navigation} title="REGISTER" />
         <Content>
           <Image style={Style.hero} source={Images.registerHero} resizeMode={'contain'} />
           <View style={Style.inputContainer}>
@@ -64,7 +66,12 @@ class RegisterScreen extends React.Component {
               placeholder="Answer"
             />
             <Content style={Style.buttonContainer}>
-              <Button block primary style={Style.button}>
+              <Button 
+                onPress={() => this.props.navigation.replace('Tabs')} 
+                block 
+                primary 
+                style={Style.button}
+              >
                 <Text>REGISTER</Text>
               </Button>
               <Button
@@ -88,11 +95,4 @@ RegisterScreen.propTypes = {
   navigation: PropTypes.object,
 }
 
-const mapStateToProps = (state) => ({})
-
-const mapDispatchToProps = (dispatch) => ({})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RegisterScreen)
+export default RegisterScreen

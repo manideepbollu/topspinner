@@ -13,17 +13,18 @@
   },
   "dependencies": {
     "apisauce": "^1.0.2",
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
+    "apollo-link-http": "^1.5.14",
+    "graphql": "^14.3.0",
+    "graphql-tag": "^2.10.1",
     "native-base": "^2.12.1",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
+    "react-apollo": "^2.5.5",
     "react-native": "0.59.4",
     "react-native-gesture-handler": "^1.1.0",
-    "react-navigation": "^3.6.0",
-    "react-redux": "^6.0.1",
-    "redux": "^4.0.1",
-    "redux-persist": "^5.10.0",
-    "redux-saga": "^1.0.2",
-    "reduxsauce": "^1.0.1"
+    "react-navigation": "^3.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

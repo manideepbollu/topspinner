@@ -1,9 +1,13 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation'
+import TabNavigator from './TabNavigator'
 
-import ExampleScreen from 'App/Containers/Example/ExampleScreen'
 import SplashScreen from 'App/Containers/SplashScreen/SplashScreen'
 import LoginScreen from 'App/Containers/Login/LoginScreen'
 import RegisterScreen from 'App/Containers/Register/RegisterScreen'
+
+const Tabs = {
+  screen: TabNavigator,
+};
 
 /**
  * The root screen contains the application's navigation.
@@ -12,18 +16,20 @@ import RegisterScreen from 'App/Containers/Register/RegisterScreen'
  */
 const StackNavigator = createStackNavigator(
   {
-    // Create the application routes here (the key is the route name, the value is the target screen)
-    // See https://reactnavigation.org/docs/en/stack-navigator.html#routeconfigs
     SplashScreen: SplashScreen,
     Login: LoginScreen,
     Register: RegisterScreen,
-    // The main application screen is our "ExampleScreen". Feel free to replace it with your
-    // own screen and remove the example.
-    MainScreen: LoginScreen,
+    Tabs: Tabs,
   },
   {
-    // See https://reactnavigation.org/docs/en/stack-navigator.html#stacknavigatorconfig
-    headerMode: 'none',
+    headerMode: 'float',
+    headerBackTitleVisible: false,
+    initialRouteName: "Login",
+    defaultNavigationOptions: {
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   }
 )
 

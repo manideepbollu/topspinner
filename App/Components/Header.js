@@ -4,12 +4,12 @@ import { PropTypes } from 'prop-types'
 
 class Header extends Component {
   render() {
-    const { navigation, title } = this.props;
+    const { navigation, title, leftIcon, rightIcon } = this.props;
     return (
       <NativeHeader>
         <Left>
           <Button onPress={() => navigation.goBack()} transparent>
-            <Icon name="arrow-back" />
+            <Icon name={leftIcon} />
           </Button>
         </Left>
         <Body>
@@ -23,7 +23,7 @@ class Header extends Component {
               <Icon name='heart' />
             </Button> */}
           <Button transparent>
-            <Icon name="more" />
+            <Icon name={rightIcon} />
           </Button>
         </Right>
       </NativeHeader>
